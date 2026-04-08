@@ -67,6 +67,34 @@ export default function App() {
       <main>
         <Hero />
 
+        {/* Catalog Section */}
+        <section id="catalog" className="py-24 bg-black">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+              <div className="max-w-xl">
+                <h2 className="text-5xl font-bold tracking-tight mb-4">Showroom Digital</h2>
+                <p className="text-zinc-500">Explore a linha completa BYD. Do compacto urbano ao sedan de luxo, temos o elétrico perfeito para você.</p>
+              </div>
+              <div className="flex gap-2">
+                <button className="px-6 py-2 bg-zinc-900 border border-zinc-800 rounded-full text-sm hover:bg-zinc-800 transition-colors">Todos</button>
+                <button className="px-6 py-2 text-zinc-500 text-sm hover:text-white transition-colors">SUV</button>
+                <button className="px-6 py-2 text-zinc-500 text-sm hover:text-white transition-colors">Sedan</button>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+              {BYD_CARS.map((car) => (
+                <CarCard 
+                  key={car.id} 
+                  car={car} 
+                  onSelect={(c: Car) => setSelectedCar(c)} 
+                  onView360={(c: Car) => setVisualizingCar(c)}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Benefits Section */}
         <section id="benefits" className="py-24 bg-zinc-950 border-y border-zinc-900">
           <div className="container mx-auto px-6">
@@ -98,34 +126,6 @@ export default function App() {
                   Reduza sua pegada de carbono a zero enquanto desfruta de uma tecnologia de ponta e economia de combustível.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Catalog Section */}
-        <section id="catalog" className="py-24 bg-black">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-              <div className="max-w-xl">
-                <h2 className="text-5xl font-bold tracking-tight mb-4">Showroom Digital</h2>
-                <p className="text-zinc-500">Explore a linha completa BYD. Do compacto urbano ao sedan de luxo, temos o elétrico perfeito para você.</p>
-              </div>
-              <div className="flex gap-2">
-                <button className="px-6 py-2 bg-zinc-900 border border-zinc-800 rounded-full text-sm hover:bg-zinc-800 transition-colors">Todos</button>
-                <button className="px-6 py-2 text-zinc-500 text-sm hover:text-white transition-colors">SUV</button>
-                <button className="px-6 py-2 text-zinc-500 text-sm hover:text-white transition-colors">Sedan</button>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-              {BYD_CARS.map((car) => (
-                <CarCard 
-                  key={car.id} 
-                  car={car} 
-                  onSelect={(c: Car) => setSelectedCar(c)} 
-                  onView360={(c: Car) => setVisualizingCar(c)}
-                />
-              ))}
             </div>
           </div>
         </section>
