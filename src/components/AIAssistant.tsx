@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Send, Bot, User, Sparkles } from 'lucide-react';
 import { BYD_CARS } from '../constants';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const apiKey = process.env.GEMINI_API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export default function AIAssistant() {
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([
@@ -15,6 +16,15 @@ export default function AIAssistant() {
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
+    
+    if (!ai) {
+      setMessages(prev => [...prev, 
+        { role: 'user', content: input },
+        { role: 'assistant', content: 'A consultoria de IA requer uma chave de API configurada. Entre em contato para saber mais!' }
+      ]);
+      setInput('');
+      return;
+    }
 
     const userMessage = input;
     setInput('');
