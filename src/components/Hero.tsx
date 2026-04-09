@@ -26,9 +26,8 @@ export default function Hero() {
           <h1 className="text-6xl md:text-8xl font-sans font-bold text-white tracking-tighter mb-6">
             Volt<span className="text-blue-500">Drive</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-            Sua porta de entrada para a revolução BYD no Brasil. 
-            Consultoria digital especializada em mobilidade sustentável.
+          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 font-light leading-relaxed">
+            "Tecnologia Dedicada que proporciona uma <span className="text-white font-medium">Experiência Digital</span> que informa, emociona, e se transforma em <span className="text-white font-medium">Experiência Real</span>."
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
